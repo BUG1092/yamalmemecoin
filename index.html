@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YamalCoin - The Future of Meme Coins</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --barca-blue: #1d1f90;
+      --barca-red: #9e1b32;
+      --white: #ffffff;
+      --gray: #f0f0f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--white);
+      color: #111;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--barca-blue), var(--barca-red));
+      color: var(--white);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header nav a {
+      color: var(--white);
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.3s ease;
+    }
+
+    header nav a:hover {
+      opacity: 0.7;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--barca-blue), var(--barca-red));
+      color: var(--white);
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-top: 1rem;
+      animation: fadeInUp 1.2s ease-in-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      color: var(--barca-blue);
+    }
+
+    .tokenomics, .roadmap, .about, .contact {
+      background: var(--gray);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    footer {
+      background-color: var(--barca-blue);
+      color: var(--white);
+      text-align: center;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>YamalCoin</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero" id="welcome">
+    <div>
+      <h1>Welcome to YamalCoin</h1>
+      <p>The meme coin inspired by Lamine Yamal and powered by the spirit of Barça</p>
+    </div>
+  </div>
+
+  <section id="about">
+    <h2>About</h2>
+    <div class="about">
+      <p>YamalCoin is a community-driven meme coin that celebrates the energy of Lamine Yamal and FC Barcelona's legendary colors. Built on BNB Smart Chain, YamalCoin combines fun, speed, and simplicity with a powerful branding identity.</p>
+    </div>
+  </section>
+
+  <section id="tokenomics">
+    <h2>Tokenomics</h2>
+    <div class="tokenomics">
+      <ul>
+        <li>Total Supply: 1,000,000,000 YML</li>
+        <li>1% Burn Tax</li>
+        <li>1% Marketing Tax</li>
+        <li>1% Reflection to holders</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <h2>Roadmap</h2>
+    <div class="roadmap">
+      <ul>
+        <li>✅ Token Launch</li>
+        <li>✅ Website Live</li>
+        <li>🔜 Social Media Setup</li>
+        <li>🔜 Community Building</li>
+        <li>🔜 Listing on CoinMarketCap & CoinGecko</li>
+        <li>🔜 NFT Integration</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact">
+      <p>Follow us on social media and stay connected for upcoming announcements.</p>
+      <p>Email: contact@yamalc.io</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 YamalCoin. All rights reserved.</p>
+  </footer>
+</body>
+</html>
