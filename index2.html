@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YamalBarça Fan Token | NU ESTE OFICIAL FC BARCELONA</title>
+    <style>
+        :root {
+            --barca-blue: #004D98;
+            --barca-red: #A50044;
+            --barca-gold: #EDBB00;
+            --barca-dark: #0A2239;
+        }
+        
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--barca-dark);
+            color: white;
+            line-height: 1.6;
+        }
+        
+        /* Banner Disclaimer */
+        .disclaimer {
+            background: linear-gradient(90deg, var(--barca-red), var(--barca-blue));
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 3px solid var(--barca-gold);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        /* Header Hero */
+        .hero {
+            background: url('camp-nou-bg.jpg') no-repeat center/cover;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 34, 57, 0.7);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo {
+            width: 150px;
+            animation: pulse 2s infinite;
+        }
+        
+        /* Token Card */
+        .token-card {
+            background: linear-gradient(135deg, var(--barca-blue), var(--barca-dark));
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            margin: -50px auto 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 3px solid var(--barca-gold);
+            position: relative;
+        }
+        
+        /* Butoane */
+        .btn-barca {
+            background: linear-gradient(90deg, var(--barca-red), var(--barca-blue));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+        
+        .btn-barca:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--barca-gold);
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Sectiune Legal */
+        .legal {
+            background: rgba(0,0,0,0.7);
+            padding: 30px;
+            margin-top: 50px;
+            border-top: 3px solid var(--barca-red);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Disclaimer Banner -->
+    <div class="disclaimer">
+        ⚠️ ATENȚIE: Acesta NU este un token oficial FC Barcelona. Este un proiect fan-made neafiliat clubului sau jucătorului Lamine Yamal.
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="yamal-barca-logo.png" alt="YamalBarça Logo" class="logo">
+            <h1>YamalBarça Fan Token</h1>
+            <p>Comunitatea crypto dedicată fenomenului Lamine Yamal</p>
+        </div>
+    </section>
+    
+    <!-- Token Info -->
+    <div class="token-card">
+        <h2><i class="fas fa-coins"></i> YamalBarça Token (YMB)</h2>
+        <p>Contract: 0xab5E...8e05</p>
+        <p>Supply: 1,000,000,000 YMB</p>
+        <p>Blockchain: BSC</p>
+        
+        <div style="margin: 30px 0;">
+            <button class="btn-barca" onclick="window.open('https://pancakeswap.finance/swap?outputCurrency=0xab5E53782Ab2362c9e97C53Ce25db48E81d38e05')">
+                <i class="fas fa-shopping-cart"></i> Cumpară acum
+            </button>
+        </div>
+        
+        <p><small>Preț curent: $0.0042</small></p>
+    </div>
+    
+    <!-- Utilizare Token -->
+    <section style="padding: 50px 20px; text-align: center;">
+        <h2>Utilitatea Tokenului YMB</h2>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px;">
+            <div style="flex: 1; min-width: 250px; background: rgba(0,77,152,0.3); padding: 20px; border-radius: 10px;">
+                <i class="fas fa-trophy" style="font-size: 2rem; color: var(--barca-gold);"></i>
+                <h3>Votare</h3>
+                <p>Decizi comunitare despre donații și evenimente</p>
+            </div>
+            <div style="flex: 1; min-width: 250px; background: rgba(165,0,68,0.3); padding: 20px; border-radius: 10px;">
+                <i class="fas fa-star" style="font-size: 2rem; color: var(--barca-gold);"></i>
+                <h3>NFT-uri</h3>
+                <p>Colecționează momente memorabile Yamal</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sectiune Legal -->
+    <section class="legal">
+        <h3><i class="fas fa-gavel"></i> Disclaimer Legal</h3>
+        <p>YamalBarça Token (YMB) este un proiect independent creat de fani și NU este afiliat cu:</p>
+        <ul>
+            <li>FC Barcelona sau orice entitate legată de club</li>
+            <li>Jucătorul Lamine Yamal sau reprezentanții săi</li>
+            <li>La Liga sau orice organizație oficială de fotbal</li>
+        </ul>
+        <p>Acesta este un token de utilitate cu scop recreațional. Nu constituie o investiție financiară. Criptomonedele prezintă riscuri semnificative.</p>
+    </section>
+    
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 20px; background: var(--barca-dark);">
+        <p>© 2023 YamalBarța Fan Token | Comunitate neoficială</p>
+        <div style="margin-top: 15px;">
+            <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-telegram"></i></a>
+            <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
