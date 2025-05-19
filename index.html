@@ -1,486 +1,439 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exchange Crypto P2P</title>
+    <title>YamalCoin - To the Moon!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
-        /* CSS Reset și Stiluri Generale */
+        /* FC Barcelona Color Scheme */
+        :root {
+            --barca-blue: #004d98;
+            --barca-dark-blue: #002b5c;
+            --barca-red: #a50044;
+            --barca-gold: #edbb00;
+            --barca-light: #dbdbdb;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: #000;
+            color: white;
+            overflow-x: hidden;
         }
-        
-        /* Header */
-        header {
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
-            position: sticky;
+
+        /* Animated Star Background */
+        .stars {
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
         }
-        
-        .container {
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        /* Fixed Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(90deg, var(--barca-dark-blue), var(--barca-blue));
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
+
         .logo {
-            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
             font-weight: bold;
-            color: #2c3e50;
+            background: linear-gradient(to right, var(--barca-gold), white);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-        
-        .logo span {
-            color: #3498db;
-        }
-        
+
         nav ul {
             display: flex;
             list-style: none;
+            gap: 30px;
         }
-        
-        nav ul li {
-            margin-left: 25px;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: #2c3e50;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: #3498db;
-        }
-        
-        .auth-buttons button {
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-        }
-        
-        .login-btn {
-            background: transparent;
-            border: 1px solid #3498db;
-            color: #3498db;
-            margin-right: 10px;
-        }
-        
-        .register-btn {
-            background: #3498db;
-            border: 1px solid #3498db;
+
+        nav a {
             color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: all 0.3s ease;
         }
-        
+
+        nav a:hover {
+            color: var(--barca-gold);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--barca-gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        .cta-buttons button {
-            padding: 12px 24px;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .primary-cta {
-            background: #fff;
-            color: #3498db;
-            border: none;
-        }
-        
-        .secondary-cta {
-            background: transparent;
-            color: #fff;
-            border: 2px solid #fff;
-        }
-        
-        /* Market Section */
-        .market-section {
-            padding: 60px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .section-title h2 {
-            font-size: 2rem;
-            color: #2c3e50;
-        }
-        
-        .filters {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            background: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-        
-        .filter-group {
+            min-height: 100vh;
             display: flex;
             align-items: center;
-        }
-        
-        .filter-group label {
-            margin-right: 10px;
-            font-weight: 500;
-        }
-        
-        select, input {
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        
-        .market-table {
-            width: 100%;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            padding-top: 80px;
+            position: relative;
             overflow: hidden;
         }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
+
+        .hero-content {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
         }
-        
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
+
+        .hero-text {
+            max-width: 600px;
         }
-        
-        th {
-            background-color: #f8f9fa;
-            font-weight: 600;
-        }
-        
-        .buy-btn {
-            background: #27ae60;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        
-        .sell-btn {
-            background: #e74c3c;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        
-        /* Footer */
-        footer {
-            background: #2c3e50;
-            color: #fff;
-            padding: 40px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-column h3 {
+
+        .hero h1 {
+            font-size: 4rem;
             margin-bottom: 20px;
+            background: linear-gradient(to right, var(--barca-gold), white);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero p {
             font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--barca-light);
         }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column ul li a {
-            color: #bdc3c7;
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--barca-red), var(--barca-blue));
+            color: white;
+            border-radius: 50px;
             text-decoration: none;
-            transition: color 0.3s;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(165, 0, 68, 0.4);
+            border: none;
+            cursor: pointer;
         }
-        
-        .footer-column ul li a:hover {
-            color: #fff;
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(165, 0, 68, 0.6);
         }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #34495e;
-            color: #bdc3c7;
+
+        .hero-image {
+            position: relative;
+            width: 400px;
+            height: 400px;
         }
-        
+
+        .moon {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle at 30% 30%, white, var(--barca-light));
+            border-radius: 50%;
+            box-shadow: 0 0 50px rgba(237, 187, 0, 0.5);
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .player-silhouette {
+            position: absolute;
+            width: 200px;
+            height: 300px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150"><path d="M50,10 C60,10 65,25 65,40 C65,55 60,70 50,70 C40,70 35,55 35,40 C35,25 40,10 50,10 Z" fill="%23002b5c"/><path d="M45,70 L55,70 L55,120 C55,130 50,140 40,140 L30,140 L30,120 L40,120 L40,90 L30,90 L25,120 L15,120 L20,90 L10,90 L10,70 L20,70 L25,40 C25,30 30,20 40,20 L60,20 C70,20 75,30 75,40 L80,70 L90,70 L90,90 L80,90 L75,120 L65,120 L70,90 L60,90 L60,120 L70,120 L70,140 L60,140 C50,140 45,130 45,120 Z" fill="%23004d98"/></svg>');
+            background-repeat: no-repeat;
+            right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            animation: float 4s ease-in-out infinite 1s;
+        }
+
+        .coin {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, var(--barca-gold), #c9a300);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(237, 187, 0, 0.7);
+            z-index: 3;
+            animation: float 5s ease-in-out infinite, spin 10s linear infinite;
+        }
+
+        .coin:nth-child(1) {
+            top: 20%;
+            left: 20%;
+        }
+
+        .coin:nth-child(2) {
+            top: 60%;
+            left: 30%;
+            animation-delay: 0.5s;
+        }
+
+        .coin:nth-child(3) {
+            top: 30%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 100px;
+            }
+
+            .hero-text {
+                margin-bottom: 50px;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-image {
+                width: 300px;
+                height: 300px;
+            }
+
+            .moon {
+                width: 200px;
+                height: 200px;
+            }
+
+            .player-silhouette {
+                width: 150px;
+                height: 225px;
+                right: 25px;
+            }
+        }
+
         @media (max-width: 768px) {
-            .header-content, .filters {
+            nav ul {
+                gap: 15px;
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-container {
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             nav ul {
-                margin-top: 15px;
+                gap: 10px;
+                flex-wrap: wrap;
                 justify-content: center;
             }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
+
+            .hero h1 {
+                font-size: 2rem;
             }
-            
-            .filter-group {
-                flex-direction: column;
-                align-items: flex-start;
-                width: 100%;
-                margin-bottom: 10px;
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-image {
+                width: 250px;
+                height: 250px;
+            }
+
+            .moon {
+                width: 150px;
+                height: 150px;
+            }
+
+            .player-silhouette {
+                width: 100px;
+                height: 150px;
+                right: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Animated Star Background -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Fixed Header -->
     <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">Trade<span>P2P</span></div>
-                <nav>
-                    <ul>
-                        <li><a href="#">Cumpără</a></li>
-                        <li><a href="#">Vinde</a></li>
-                        <li><a href="#">Despre</a></li>
-                        <li><a href="#">Suport</a></li>
-                    </ul>
-                </nav>
-                <div class="auth-buttons">
-                    <button class="login-btn">Autentificare</button>
-                    <button class="register-btn">Înregistrare</button>
-                </div>
+        <div class="header-container">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjRURCQjAwIiBkPSJNNDQ4IDMySDEwLjNDNC42IDMyIDAgMzYuNiAwIDQyLjN2NDI3LjRjMCA1LjcgNC42IDEwLjMgMTAuMyAxMC4zSDQ0OGM1LjcgMCAxMC4zLTQuNiAxMC4zLTEwLjNWNDIuM2MwLTUuNy00LjYtMTAuMy0xMC4zLTEwLjN6Ii8+PHBhdGggZmlsbD0iIzAwNEQ5OCIgZD0iTTQ0OCAzMkgzMjB2MTYwaDEyOHYtMTQ1LjdjMC01LjctNC42LTEwLjMtMTAuMy0xMC4zek0xOTIgMTkyVjMySDY0djE2MGgxMjh6TTAgMTkyaDEyOFYzMkgxMC4zQzQuNiAzMiAwIDM2LjYgMCA0Mi4zVjE5MnpNMTkyIDMyMHYxNjBoMTI4VjMyMEgxOTJ6TTAgMzIwaDEyOHYxNjBIMTAuM2MtNS43IDAtMTAuMy00LjYtMTAuMy0xMC4zVjMyMHoiLz48L3N2Zz4=" alt="FC Barcelona Logo">
+                <span class="logo-text">YamalCoin</span>
             </div>
+            <nav>
+                <ul>
+                    <li><a href="#welcome">Welcome</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#tokenomics">Tokenomics</a></li>
+                    <li><a href="#roadmap">Roadmap</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Trade Crypto Anonim și Securizat</h1>
-            <p>Platforma noastră P2P îți permite să tranzacționezi cryptocurrency direct cu alți utilizatori, folosind multiple metode de plată și sistem de escrow pentru siguranță.</p>
-            <div class="cta-buttons">
-                <button class="primary-cta">Începe să tranzacționezi</button>
-                <button class="secondary-cta">Află mai multe</button>
+    <section class="hero" id="welcome">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="animate__animated animate__fadeInDown">YamalCoin – To the moon with Yamal!</h1>
+                <p class="animate__animated animate__fadeIn animate__delay-1s">Meme coin inspirat de talentul generației</p>
+                <button class="cta-button animate__animated animate__fadeInUp animate__delay-2s">Cumpără acum</button>
+            </div>
+            <div class="hero-image">
+                <div class="moon"></div>
+                <div class="player-silhouette"></div>
+                <div class="coin"></div>
+                <div class="coin"></div>
+                <div class="coin"></div>
             </div>
         </div>
     </section>
-
-    <!-- Market Section -->
-    <section class="market-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Piața noastră de tranzacționare</h2>
-            </div>
-            
-            <div class="filters">
-                <div class="filter-group">
-                    <label for="crypto">Crypto:</label>
-                    <select id="crypto">
-                        <option>Toate</option>
-                        <option>Bitcoin (BTC)</option>
-                        <option>Ethereum (ETH)</option>
-                        <option>USDT</option>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label for="currency">Monedă:</label>
-                    <select id="currency">
-                        <option>RON</option>
-                        <option>EUR</option>
-                        <option>USD</option>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label for="payment">Plată:</label>
-                    <select id="payment">
-                        <option>Toate</option>
-                        <option>Transfer bancar</option>
-                        <option>Revolut</option>
-                        <option>PayPal</option>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label for="amount">Suma:</label>
-                    <input type="text" id="amount" placeholder="100-1000">
-                </div>
-            </div>
-            
-            <div class="market-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Vânzător</th>
-                            <th>Preț</th>
-                            <th>Limite</th>
-                            <th>Plăți</th>
-                            <th>Acțiune</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>User123 (98%)</td>
-                            <td>28,500 RON/BTC</td>
-                            <td>500 - 5,000 RON</td>
-                            <td>Transfer bancar, Revolut</td>
-                            <td><button class="buy-btn">Cumpără</button></td>
-                        </tr>
-                        <tr>
-                            <td>CryptoKing (100%)</td>
-                            <td>28,700 RON/BTC</td>
-                            <td>1,000 - 10,000 RON</td>
-                            <td>Revolut, PayPal</td>
-                            <td><button class="buy-btn">Cumpără</button></td>
-                        </tr>
-                        <tr>
-                            <td>TraderPro (95%)</td>
-                            <td>28,300 RON/BTC</td>
-                            <td>200 - 2,000 RON</td>
-                            <td>Transfer bancar</td>
-                            <td><button class="buy-btn">Cumpără</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>TradeP2P</h3>
-                    <ul>
-                        <li><a href="#">Despre noi</a></li>
-                        <li><a href="#">Cariere</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Servicii</h3>
-                    <ul>
-                        <li><a href="#">Tranzacționare P2P</a></li>
-                        <li><a href="#">Sistem de escrow</a></li>
-                        <li><a href="#">Securitate</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Suport</h3>
-                    <ul>
-                        <li><a href="#">Centru de ajutor</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="#">Termeni și condiții</a></li>
-                        <li><a href="#">Politică de confidențialitate</a></li>
-                        <li><a href="#">Politică cookies</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 TradeP2P. Toate drepturile rezervate.</p>
-            </div>
-        </div>
-    </footer>
 
     <script>
-        // JavaScript pentru funcționalități de bază
+        // Create stars for background
         document.addEventListener('DOMContentLoaded', function() {
-            // Butoane de autentificare/înregistrare
-            const loginBtn = document.querySelector('.login-btn');
-            const registerBtn = document.querySelector('.register-btn');
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 100;
             
-            loginBtn.addEventListener('click', function() {
-                alert('Aici ar fi un formular de autentificare');
-            });
-            
-            registerBtn.addEventListener('click', function() {
-                alert('Aici ar fi un formular de înregistrare');
-            });
-            
-            // Butoane de cumpărare din tabel
-            const buyButtons = document.querySelectorAll('.buy-btn');
-            buyButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    alert('Ați selectat o ofertă de cumpărare. În versiunea completă, ați fi redirecționat către pagina de tranzacție.');
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random size between 1px and 3px
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Random position
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation duration
+                const duration = `${Math.random() * 3 + 2}s`;
+                star.style.setProperty('--duration', duration);
+                
+                starsContainer.appendChild(star);
+            }
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 });
             });
-            
-            // Filtre - simulare funcționalitate
-            const filters = document.querySelectorAll('.filters select, .filters input');
-            filters.forEach(filter => {
-                filter.addEventListener('change', function() {
-                    console.log('Filtru aplicat:', this.id, this.value);
-                    // În versiunea reală, aici s-ar face o cerere API pentru a reîmprospăta datele
+
+            // Animate elements when they come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
                 });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('#about, #tokenomics, #roadmap, #contact').forEach(section => {
+                observer.observe(section);
             });
         });
     </script>
