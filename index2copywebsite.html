@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YamalCoin | The Future of Meme Coins</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #1d1f33, #3c0f2d);
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #00000080;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: #ffcc00;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    .section {
+      padding: 100px 20px 80px;
+      text-align: center;
+    }
+
+    #welcome {
+      background: linear-gradient(to right, #1b0d3a, #62001a);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    #welcome h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    #welcome p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    #welcome img {
+      max-width: 220px;
+      border-radius: 16px;
+      margin-top: 1rem;
+      animation: popIn 1s ease-in-out;
+    }
+
+    .about-section,
+    .utility-section {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 4rem 2rem;
+      margin-top: 3rem;
+      border-radius: 16px;
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+    }
+
+    .about-section h2,
+    .utility-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    .about-section p,
+    .utility-section p {
+      font-size: 1.1rem;
+      color: #ddd;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .utility-icons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .utility-item {
+      background: #ffffff10;
+      padding: 1.5rem;
+      border-radius: 12px;
+      width: 240px;
+      transition: transform 0.3s ease;
+      animation: fadeInUp 1.2s ease forwards;
+      opacity: 0;
+    }
+
+    .utility-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .utility-item i {
+      font-size: 2.2rem;
+      color: #ffcc00;
+      margin-bottom: 0.8rem;
+    }
+
+    .utility-item h4 {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .utility-item p {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>YamalCoin ⚽🚀</h1>
+    <nav>
+      <a href="#welcome">Welcome</a>
+      <a href="#about">About</a>
+      <a href="#utility">Utility</a>
+      <a href="#tokenomics">Tokenomics</a>
+    </nav>
+  </header>
+
+  <!-- Welcome Section -->
+  <section id="welcome" class="section">
+    <h2>Welcome to YamalCoin ⚽🚀</h2>
+    <p>YamalCoin ($YML) is a meme coin inspired by Lamine Yamal, combining Dogecoin’s fun with Barça’s legendary colors.</p>
+    <img src="yamal-logo.png" alt="Yamal Face Logo" />
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about-section">
+    <h2>What is YamalCoin?</h2>
+    <p>
+      YamalCoin is a community-powered memecoin built on BNB Smart Chain. With deflationary mechanics and a strong fan-driven mission, it’s more than hype—it’s a tribute to talent and determination. YamalCoin brings together football passion, crypto innovation, and meme energy into a unique decentralized project.
+    </p>
+  </section>
+
+  <!-- Utility Section -->
+  <section id="utility" class="section utility-section">
+    <h2>Utility & Vision</h2>
+    <p>YamalCoin is more than a meme. Here's how we give it real-world power:</p>
+    <div class="utility-icons">
+      <div class="utility-item">
+        <i class="fas fa-fire"></i>
+        <h4>Deflationary</h4>
+        <p>1% burn on every transaction to reduce supply and increase scarcity.</p>
+      </div>
+      <div class="utility-item">
+        <i class="fas fa-bullhorn"></i>
+        <h4>Marketing Growth</h4>
+        <p>1% fee funds global marketing to grow brand awareness & adoption.</p>
+      </div>
+      <div class="utility-item">
+        <i class="fas fa-users"></i>
+        <h4>Community Rewards</h4>
+        <p>1% reflections redistributed to holders, rewarding long-term support.</p>
+      </div>
+      <div class="utility-item">
+        <i class="fas fa-gamepad"></i>
+        <h4>Future GameFi</h4>
+        <p>Plans to integrate with mini-games & NFT collectibles in 2026.</p>
+      </div>
+    </div>
+  </section>
+
+ <!-- Tokenomics Section -->
+<section id="tokenomics" class="section tokenomics-section">
+  <h2>Tokenomics</h2>
+  <p>$YML is designed with a sustainable tokenomics model to ensure long-term growth and stability.</p>
+  
+  <div class="tokenomics-grid">
+    <div class="token-card">
+      <h3>Total Supply</h3>
+      <p>1,000,000,000 YML</p>
+    </div>
+    <div class="token-card">
+      <h3>Burn Tax 🔥</h3>
+      <p>1% of every transaction is burned forever</p>
+    </div>
+    <div class="token-card">
+      <h3>Marketing Tax 📢</h3>
+      <p>1% goes to spreading the YamalCoin message</p>
+    </div>
+    <div class="token-card">
+      <h3>Reflection Tax 💸</h3>
+      <p>1% redistributed to all holders automatically</p>
+    </div>
+  </div>
+</section>
+
+
+  <section id="roadmap" class="section">
+    <h2>Roadmap</h2>
+    <ul>
+      <li><strong>Q2 2025</strong> – Token Launch, Website Live, Community Growth</li>
+      <li><strong>Q3 2025</strong> – Listings on CoinGecko & CoinMarketCap</li>
+      <li><strong>Q4 2025</strong> – NFT Collection, Partnerships</li>
+      <li><strong>2026</strong> – GameFi Utility, CEX Listing</li>
+    </ul>
+    <p>✅ Token Creation<br>✅ Website Launch<br>🚀 Social Media Pages<br>📈 Listings (DEXTools, CoinGecko, CoinMarketCap)<br>🌍 Community Expansion</p>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact & Social Media</h2>
+    <p>Email: team@yamalcoin.io</p>
+    <div class="socials">
+      <a href="https://t.me/YamalCoin" target="_blank">Telegram</a> |
+      <a href="https://twitter.com/YamalCoin" target="_blank">Twitter</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 YamalCoin. All rights reserved.</p>
+    <p>Cryptocurrency investments are subject to high market risk. YamalCoin is not responsible for your trading losses.</p>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', function () {
+      document.querySelectorAll('.about-section, .tokenomics, #roadmap, #contact').forEach(el => {
+        const pos = el.getBoundingClientRect().top;
+        const screenPos = window.innerHeight / 1.3;
+        if (pos < screenPos) {
+          el.style.opacity = 1;
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
